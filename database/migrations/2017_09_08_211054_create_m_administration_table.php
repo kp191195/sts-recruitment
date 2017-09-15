@@ -16,6 +16,7 @@ class CreateMAdministrationTable extends Migration
             $table->bigIncrements('administration_id');
             $table->bigInteger('employee_id');
             $table->string('adminstration_name');
+            $table->string('administration_status',50);
             $table->bigInteger('create_user_id');
             $table->string('create_datetime');
             $table->bigInteger('update_user_id');
