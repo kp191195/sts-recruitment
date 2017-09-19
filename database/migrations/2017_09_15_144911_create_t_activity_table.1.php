@@ -12,13 +12,15 @@ class CreateTJobDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_job_apply_detail', function (Blueprint $table) {
-            $table->bigIncrements('job_apply_detail_id');
+        Schema::create('t_activity', function (Blueprint $table) {
+            $table->bigIncrements('activity_id');
             $table->bigInteger('job_apply_id');
             $table->string('pic_name',50);
             $table->string('flg_contacted_via',20);
-            $table->string('meeting_datetime',8);
-            $table->string('meeting_location',50);
+            $table->string('activity_datetime',8);
+            $table->string('activity_location',50);
+            $table->text('activity_description');
+            $table->text('activity_location');
             $table->text('remark');
             $table->bigInteger('create_user_id');
             $table->string('create_datetime',14);

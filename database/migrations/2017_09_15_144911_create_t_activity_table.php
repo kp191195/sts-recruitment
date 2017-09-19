@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTJobApplyTable extends Migration
+class CreateTJobDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,16 @@ class CreateTJobApplyTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_job_apply', function (Blueprint $table) {
-            $table->bigIncrements('job_apply_id');
-            $table->bigInteger('applicant_id');
-            $table->bigInteger('job_id');
-            $table->string('apply_date',8);
-            $table->string('flg_qualified',1);
-            $table->string('flg_accept',1);
+        Schema::create('t_activity', function (Blueprint $table) {
+            $table->bigIncrements('activity_id');
+            $table->bigInteger('job_apply_id');
+            $table->string('pic_name',50);
+            $table->string('flg_contacted_via',20);
+            $table->string('activity_datetime',8);
+            $table->string('activity_location',50);
+            $table->text('activity_description');
+            $table->text('activity_location');
+            $table->text('remark');
             $table->bigInteger('create_user_id');
             $table->string('create_datetime',14);
             $table->bigInteger('update_user_id');
@@ -34,6 +37,6 @@ class CreateTJobApplyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('t_job_apply');
+         Schema::drop('t_job_apply_detail');
     }
 }
