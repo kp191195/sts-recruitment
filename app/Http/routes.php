@@ -13,5 +13,5 @@
 
 Route::get('/', function () {
     //return view('welcome');
-    return view('welcome-rec');
+    return view('welcome-use-template');
 });

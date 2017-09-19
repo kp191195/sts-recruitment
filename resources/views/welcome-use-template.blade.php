@@ -1,97 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | Corlate</title>
-	
-	<!-- core CSS -->
-    <link href="assets/corlate-free-template/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/animate.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/prettyPhoto.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/main.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="assets/corlate-free-template/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/corlate-free-template/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/corlate-free-template/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/corlate-free-template/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/corlate-free-template/images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+@extends('layout.master')
 
-<body class="homepage">
+@section('title','Home')
 
-    <header id="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
-                    </div>
-                    <div class="col-sm-6 col-xs-8">
-                       <div class="social">
-                            <ul class="social-share">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                            </ul>
-                            <div class="search">
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
-                           </div>
-                       </div>
-                    </div>
-                </div>
-            </div><!--/.container-->
-        </div><!--/.top-bar-->
+@section('navigation')
+    @include('include.nav')
+@endsection
 
-        <nav class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="assets/corlate-free-template/images/logo.png" alt="logo"></a>
-                </div>
-				
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Blog Single</a></li>
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">404</a></li>
-                                <li><a href="#">Shortcodes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Blog</a></li> 
-                        <li><a href="#">Contact</a></li>                        
-                    </ul>
-                </div>
-            </div><!--/.container-->
-        </nav><!--/nav-->
-		
-    </header><!--/header-->
-
-    <section id="main-slider" class="no-margin">
+@section('content')
+<section id="main-slider" class="no-margin">
         <div class="carousel slide">
             <ol class="carousel-indicators">
                 <li data-target="#main-slider" data-slide-to="0" class="active"></li>
@@ -772,12 +688,4 @@
             </div>
         </div>
     </footer><!--/#footer-->
-
-    <script src="assets/corlate-free-template/js/jquery.js"></script>
-    <script src="assets/corlate-free-template/js/bootstrap.min.js"></script>
-    <script src="assets/corlate-free-template/js/jquery.prettyPhoto.js"></script>
-    <script src="assets/corlate-free-template/js/jquery.isotope.min.js"></script>
-    <script src="assets/corlate-free-template/js/main.js"></script>
-    <script src="assets/corlate-free-template/js/wow.min.js"></script>
-</body>
-</html>
+@endsection
