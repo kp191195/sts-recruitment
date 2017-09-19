@@ -13,5 +13,7 @@
 
 Route::get('/', function () {
     //return view('welcome');
-    return view('welcome-use-template');
+    return view('login.login');
 });
+
+Route::post('/getLogins', 'DoLoginController@getLogins');
