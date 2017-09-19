@@ -31,6 +31,6 @@ class CreateMJobTable extends Migration
      */
     public function down()
     {
-        Schema::drop('t_job');
+        Schema::drop('m_job');
     }
 }

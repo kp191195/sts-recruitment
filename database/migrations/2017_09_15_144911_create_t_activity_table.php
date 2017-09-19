@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTJobDetailTable extends Migration
+class CreateTactivityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,6 @@ class CreateTJobDetailTable extends Migration
             $table->string('pic_name',50);
             $table->string('flg_contacted_via',20);
             $table->string('activity_datetime',8);
-            $table->string('activity_location',50);
             $table->text('activity_description');
             $table->text('activity_location');
             $table->text('remark');
@@ -37,6 +36,6 @@ class CreateTJobDetailTable extends Migration
      */
     public function down()
     {
-         Schema::drop('t_job_apply_detail');
+         Schema::drop('t_activity');
     }
 }
