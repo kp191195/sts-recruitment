@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTactivityTable extends Migration
+class CreateTActivityTable extends Migration
 {
     /**
      * Run the migrations.

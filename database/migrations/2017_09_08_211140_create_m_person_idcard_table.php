@@ -26,6 +26,7 @@ class CreateMPersonIdcardTable extends Migration
             $table->bigInteger('update_user_id');
             $table->string('update_datetime');
             $table->bigInteger('version')->default(0);
+            $table->unique(['person_idcard_id','card_no']);
 
             
         });

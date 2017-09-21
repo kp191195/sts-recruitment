@@ -24,6 +24,7 @@ class CreateTJobApplyTable extends Migration
             $table->bigInteger('update_user_id');
             $table->string('update_datetime',14);
             $table->bigInteger('version')->default(0);
+            $table->unique(['applicant_id','job_id']);
         });
     }
 
