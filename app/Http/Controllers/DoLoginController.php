@@ -41,6 +41,6 @@ class DoLoginController extends Controller
 
         Session::put('sessionUser',$session);
         
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 }
