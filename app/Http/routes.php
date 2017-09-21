@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
+    //
     return view('login.login');
 });
-
 Route::post('/getLogins', 'DoLoginController@getLogins');
+
+Route::group(['middleware'=>'loggedUser'],function(){
+    Route::get('/home',function(){
+        return view('welcome-use-template');
+    });
+
+    Route::get('/logout', 'DoLogoutController@logout');
+});

@@ -53,7 +53,13 @@
                             </ul>
                         </li>
                         <li><a href="#">Blog</a></li> 
-                        <li><a href="#">Contact</a></li>                        
+                        <li><a href="#">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Session::get('sessionUser.name')}}&nbsp;<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">Log Out</a></li>
+                            </ul>
+                        </li>                      
                     </ul>
                 </div>
             </div><!--/.container-->

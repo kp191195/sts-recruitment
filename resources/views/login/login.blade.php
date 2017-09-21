@@ -68,28 +68,42 @@ span.psw {
 </style>
 @endsection
 @section('content')
+    
     <div class="container">
+    
+    
+
+    @if(count($errors)>0)
+        <div class = "alert alert-danger">
+            <p>Username atau password harus diisi.</p>
+        </div>
+    @endif
+    
+   @if(session('failMsg'))
+        <div class = "alert alert-danger">
+            <p>{{session('failMsg')}}</p>
+        </div>
+    @endif
     <form action="/getLogins" method="POST">
     <div class="imgcontainer">
-      <img src="assets/corlate-free-template/images/logo.png" alt="Avatar" class="avatar">
+      <img src="assets/corlate-free-template/images/logo-sts.png" alt="Avatar" class="avatar">
     </div>
   
     <div class="form-group">
       {{csrf_field()}}
-      <label class="form-group"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required class="form-group">
+      <label class="form-group"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="uname" required class="form-group">
   
       <label class="form-group"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required class="form-group">
           
       <button type="submit">Login</button>
-      <input class="form-group" type="checkbox" checked="checked"> Remember me
+      <!-- <input class="form-group" type="checkbox" checked="checked"> Remember me -->
     </div>
   
-    <div class="form-group" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
+    <!-- <div class="form-group" style="background-color:#f1f1f1">
       <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
+    </div> -->
   </form>
     </div>
     
