@@ -6,14 +6,7 @@
     @include('include.nav')
 @endsection
 
-@section('css')
-<style>
-.container {
-    padding-top: 10px;
-    padding: 16px;
-}
-</style>
-@endsection
+
 
 @section('content')
     <div class="container">
