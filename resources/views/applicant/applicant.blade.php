@@ -6,18 +6,25 @@
     @include('include.nav')
 @endsection
 
-
+@section('css')
+<style>
+.container {
+    padding-top: 10px;
+    padding: 16px;
+}
+</style>
+@endsection
 
 @section('content')
     <div class="container">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-    <ul class="dropdown-menu">
-        <li><a href="#">Blog Single</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">404</a></li>
-        <li><a href="#">Shortcodes</a></li>
-    </ul>
-    
+
+    <label>Job</label>
+    <select name="job" id="job">
+        <option value="All">All</option>
+        @foreach($job as $job)
+        <option value="{{$job->job_id}}" {{ $selectedJob->job_id == $job->job_id ? 'selected="selected"' : '' }}>{{ $job->job_name}}</option>
+        @endforeach
+    </select>
     <table class="table" id="table" border="1">
         <thead>
             <tr>

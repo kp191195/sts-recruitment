@@ -13,7 +13,7 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/dashboard">Dasboard</a></li>
+                        <li><a href="/dashboard">Dasboard</a></li>
                         <li><a href="#">Applicant</a></li>
                         <li><a href="#">Administration</a></li>
                         <li><a href="#">Setting</a></li>

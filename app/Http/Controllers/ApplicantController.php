@@ -17,9 +17,13 @@ class ApplicantController extends Controller
     {
         Log::debug($jid);
 
-        $job = MJob::find($jid);
+        $job = MJob::get();
         // $job = MJob::all();
         Log::debug($job);
+
+        $selectedJob = MJob::find($jid);
+        // $job = MJob::all();
+        Log::debug($selectedJob);
 
         $results = DB::select( DB::raw(" 
         WITH flg_q AS (
@@ -44,6 +48,6 @@ class ApplicantController extends Controller
         ORDER BY A.job_id "));
         Log::debug($results);
 
-        return view('applicant.applicant', ['dashboard' => $results]);
+        return view('applicant.applicant', ['dashboard' => $results,'job'=> $job, 'selectedJob' => $selectedJob]);
     }
 }
