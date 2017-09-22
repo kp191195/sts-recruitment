@@ -20,15 +20,10 @@ Route::get('/registrasi', 'RegistrasiController@index');
 Route::post('/getLogins', 'DoLoginController@getLogins');
 Route::post('/applyJob', 'RegistrasiController@addApplicant');
 
-
-
-
 Route::group(['middleware'=>'loggedUser'],function(){
     Route::get('/home',function(){
         return view('welcome-use-template');
-    });
-
-    
+    });    
 
     Route::get('/logout', 'DoLogoutController@logout');
     Route::get('/dashboard', 'DashboardController@getDashboard');
