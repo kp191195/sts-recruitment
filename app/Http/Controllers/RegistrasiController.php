@@ -62,7 +62,7 @@ class RegistrasiController extends Controller
 
 
         //add cv 
-        
+        $extensionCv = $input['fileCv']->getClientOriginalExtension();
         $applicantFile = new ApplicantFile();
         $applicantFile->applicant_id = $applicant->applicant_id;
         $applicantFile->file_name = $filename."-cv";
@@ -74,11 +74,11 @@ class RegistrasiController extends Controller
         $applicantFile->update_datetime = $datetime;
         $applicantFile->version = 0;
         $applicantFile->save();
-        $cv = $input['fileCv']->move($path,$filename."-cv"); 
+        $cv = $input['fileCv']->move($path,$filename."-cv.".$extensionCv); 
         //add other files
         $ctr = 1;
         foreach($arrayFile as $file){
-            
+            $extensionFile = $file->getClientOriginalExtension();
             $applicantFile = new ApplicantFile();
             $applicantFile->applicant_id = $applicant->applicant_id;
             $applicantFile->file_name = $filename."-".$ctr;
@@ -90,7 +90,7 @@ class RegistrasiController extends Controller
             $applicantFile->update_datetime = $datetime;
             $applicantFile->version = 0;
             $applicantFile->save();
-            $fileInsert = $file->move($path,$filename."-".$ctr);
+            $fileInsert = $file->move($path,$filename."-".$ctr.".".$extensionFile);
             $ctr++;
         }
 
