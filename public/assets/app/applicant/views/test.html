@@ -1,9 +1,148 @@
-<div class="modal-header">
-    <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
-</div>
 <div class="modal-body" id="modal-body">
-    <p>INI CONTENT</p>
-</div>
-<div class="modal-footer">
-    <p>INI FOOTER</p>
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Activity">
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Name</label>
+                                </div>
+                                
+                                <div class="col-md-8">
+                                        <input type="text" readonly="true" value="Jacob" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <button class="btn btn-success">Submit</button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-alert" ng-click="cancel()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Email</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" readonly="true" value="jacob@gmail.com" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Contact by</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="contactBy">Email
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="contactBy">Phone
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">PIC</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" placeholder="Nama PIC" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Meeting Location</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" rows="5" placeholder="Lokasi meeting berada di..." class="form-control" style="resize:none;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Date</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="col-md-8">
+                                            <p class="input-group">
+                                                    <input type="text" class="form-control" uib-datepicker-popup="<% format %>" ng-model="dt" is-open="status.opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                                    <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                            </p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>     
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Time</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="col-md-12">
+                                            <uib-timepicker ng-model="mytime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="name">Remark</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" rows="5" placeholder="Keperluan meeting..." class="form-control" style="resize:none;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="name">Note</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" rows="5" placeholder="Catatan Lainnya" class="form-control" style="resize:none;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            
+        </uib-tab>
+        <uib-tab index="1" heading="Note">
+            Note
+        </uib-tab>
+    </uib-tabset>
 </div>
