@@ -36,6 +36,9 @@
         <script src="/assets/corlate-free-template/js/jquery.isotope.min.js"></script>
         <script src="/assets/corlate-free-template/js/main.js"></script>
         <script src="/assets/corlate-free-template/js/wow.min.js"></script>
+        <script src="/assets/angular.min.js"></script>
+        <script src="/assets/ui-router.js"></script>
+        <script src="/assets/ui-bootstrap.min.js"></script>
         @yield('script')
     </body>
 </html>

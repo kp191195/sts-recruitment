@@ -13,6 +13,7 @@ use App\TJobApply;
 
 class DashboardController extends Controller
 {
+
     public function getDashboard()
     {
         // $job = MJob::all();
