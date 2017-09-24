@@ -15,7 +15,7 @@ class CreateMAdministrationTable extends Migration
         Schema::create('m_administration', function (Blueprint $table) {
             $table->bigIncrements('administration_id');
             $table->bigInteger('employee_id');
-            $table->string('adminstration_name');
+            $table->string('administration_name');
             $table->string('administration_status',50);
             $table->bigInteger('create_user_id');
             $table->string('create_datetime');

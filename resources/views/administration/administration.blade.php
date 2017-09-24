@@ -18,7 +18,6 @@
 
     <h2><Strong>ADMINISTRATION</Strong></h2>
     <br><br>
-
     <table class="table" id="table" border="1">
         <thead>
             <tr>
@@ -36,9 +35,7 @@
                 
             </tr>
         @endforeach
-            
         </tbody>
     </table>
-
     </div>
 @endsection

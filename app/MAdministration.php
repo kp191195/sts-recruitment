@@ -10,5 +10,5 @@ class MAdministration extends Model
     protected $primaryKey =  'administration_id';
     public $timestamps = false;
 
-    protected $fillable = ['employee_id', 'adminstration_name', 'administration_status', 'create_user_id', 'create_datetime', 'update_user_id', 'update_datetime', 'version'];
+    protected $fillable = ['employee_id', 'administration_name', 'administration_status', 'create_user_id', 'create_datetime', 'update_user_id', 'update_datetime', 'version'];
 }
