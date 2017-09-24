@@ -27,8 +27,9 @@ Route::group(['middleware'=>'loggedUser'],function(){
 
     Route::get('/logout', 'DoLogoutController@logout');
     Route::get('/dashboard', 'DashboardController@getDashboard');
-    Route::get('/applicant', 'ApplicantController@getApplicant');
-    Route::get('/applicant/{jid}', 'ApplicantController@getApplicantWtihParam');
+    // Route::get('/applicant', 'ApplicantController@getApplicant');
+    Route::get('/applicant/{jid?}/', 'ApplicantController@getApplicantWtihParam');
     Route::get('/administration', 'AdministrationController@getAdministrationList');
+    Route::get('/administrationDetail/{eid}/', 'AdministrationDetailController@getAdministrationDetail');
     
 });

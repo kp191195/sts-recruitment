@@ -22,7 +22,7 @@
     <table class="table" id="table" border="1">
         <thead>
             <tr>
-                <th class="text-center">Nmae</th>
+                <th class="text-center">Name</th>
                 <th class="text-center">Position</th>
                 <th class="text-center">Action</th>
             </tr>
@@ -32,7 +32,7 @@
             <tr>
                 <td>{{$adminList->name}}</td>
                 <td>{{$adminList->job_name}}</td>
-                <td><a href="#">View Detail</a></td>   
+                <td><a href="/administrationDetail/{{$adminList->employee_id}}">View Detail</a></td>   
                 
             </tr>
         @endforeach
