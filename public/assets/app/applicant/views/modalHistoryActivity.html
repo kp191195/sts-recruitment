@@ -1,0 +1,57 @@
+<div class="modal-header" id="modal-body">
+    <div class="container">
+            <div class="col-md-4">
+                    View Activity History
+            </div>
+            <div class="col-md-4" align="right">
+                    <button ng-click="cancel()" class="btn btn-danger">Back</button>
+            </div>
+    </div>
+    
+        
+</div>
+<div class="modal-body" id="modal-body">
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="name" >Nama</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" readonly="true" name="name" class = "form-control" ng-model = applicantData.name>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="name" >Email</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" readonly="true" name="name" class = "form-control" ng-model = applicantData.email>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <div class="col-md-8">
+                        <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Activity Datetime</th>
+                                        <th class="text-center">Activity</th>
+                                        <th class="text-center">Remark</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="row in dataHistoryActivity">
+                                        <td class="text-center">{{row.activity_datetime}}</td>
+                                        <td class="text-center">{{row.activity_description}}</td>
+                                        <td class="text-center">{{row.remark}}</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+</div>

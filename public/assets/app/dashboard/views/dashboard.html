@@ -1,0 +1,24 @@
+<div class="container">
+        
+            <table class="table" id="table" border="1">
+                <thead>
+                    <tr>
+                        <th class="text-center">Job</th>
+                        <th class="text-center">Applicant</th>
+                        <th class="text-center">Qualified</th>
+                        <th class="text-center">Accepted</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>    
+                    <tr ng-repeat="row in dataDashboard">
+                        <td>{{row.job_name}}</td>
+                        <td>{{row.count_applicant}}</td>
+                        <td>{{row.count_qualified}}</td>
+                        <td>{{row.count_accept}}</td>
+                        <td><a ui-sref="applicant({jobId:row.job_id})">view</a></td>   
+                    </tr>              
+                </tbody>
+            </table>
+        
+            </div>

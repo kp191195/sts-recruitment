@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Job</label>    
+            <select name="job" id="job" ng-model="selectedJob" ng-change="changedSelectedJob(selectedJob)">
+                    <option value="-99" selected="selected">All</option>    
+                    <option ng-selected="{{paramJobId == job.job_id}}" ng-repeat="job in jobList" value="{{job.job_id}}">{{job.job_name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <label>Qualified</label>
+            &nbsp; &nbsp;
+            <input name="qualified" type="checkbox" value="Y" ng-model="flgQualified" ng-click="filterApplicant()">
+        </div>
+        <div class="col-sm-2">
+            <label>Accepted</label>
+            &nbsp; &nbsp;
+            <input name="accepted" type="checkbox" value="Y" ng-model="flgAccepted" ng-click="filterApplicant()">
+        </div>
+    </div>
+    
+   
+    
+    </div>
+    
+    <table class="table" id="table" border="1">
+        <thead>
+            <tr>
+                
+                <th class="text-center">Name</th>
+                <th class="text-center">E-mail</th>
+                <th class="text-center">Phone</th>
+                <th class="text-center">CV</th>
+                <th class="text-center">File</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Activity</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="applicant in applicantList">
+                <td align="middle" style="vertical-align:middle;">{{applicant.name}}</td>
+                <td align="middle" style="vertical-align:middle;">{{applicant.email}}</td>
+                <td align="middle" style="vertical-align:middle;">{{applicant.phone_no}}</td>
+                <td align="middle" style="vertical-align:middle;"><a href="" ng-click="downloadCv(applicant)">Download CV</a></td>
+                <td align="middle" style="vertical-align:middle;"><a href="" ng-click="downloadOtherFile(applicant)">Download Applicant Archive</a></td>
+                <td align="middle" style="vertical-align:middle;">{{applicant.remark}}</td>
+                <td align="middle" style="vertical-align:middle;"><a href="" ng-click="openModalHistoryActivity(applicant)">View Activity History</a></td>
+                <td align="left" style="vertical-align:middle;">
+                    <!-- <select name="job" id="job">
+                        <option>More Action</option>
+                        <option >Activity</option> 
+                        <option ng-click="open()">Note</option>
+                        <option>Qualified</option>
+                        <option>Accept</option>
+                    </select> -->
+                    <div class="form-group">
+                        <a href="" ng-click="openModal(applicant,'activity')">Activity</a>
+                    </div>
+                    <div class="form-group">
+                        <a href="" ng-click="openModal(applicant,'note')">Note</a>
+                    </div>
+                    <div class="form-group">
+                        <a href="" ng-click="updateQualified(applicant)">Qualified</a> 
+                    </div>
+                    <div class="form-group">
+                        <a href="" ng-click="updateAccepted(applicant)">Accept</a>
+                    </div>
+                    
+                    
+                    
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+
+    </div>
+</div>
