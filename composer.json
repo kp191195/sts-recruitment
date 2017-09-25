@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "ramsey/uuid": "^3.7",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "chumper/zipper": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

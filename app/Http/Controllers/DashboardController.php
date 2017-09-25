@@ -10,11 +10,16 @@ use Validator;
 use Session;
 use App\MJob;
 use App\TJobApply;
+use Zipper;
+use Mail;
+use App\Activity;
 
 class DashboardController extends Controller
 {
-
-    public function getDashboard()
+    public function index(){
+        return view('dashboard.index');
+    }
+    public function apiGetDataForDashboard()
     {
         // $job = MJob::all();
         // Log::debug($job);
@@ -41,7 +46,145 @@ class DashboardController extends Controller
         GROUP BY A.job_id,c.count_q, d.count_a
         ORDER BY A.job_id "));
         Log::debug($results);
+        $json = [
+            'status'=>'OK',
+            'result'=>$results
+        ];
+        return response()->json($json);
+    }
+    public function apiGetJobList()
+    {
+        // $job = MJob::all();
+        // Log::debug($job);
+        $job = MJob::all();
+       
+        Log::debug($job);
+        $json = [
+            'status'=>'OK',
+            'result'=>$job
+        ];
+        return response()->json($json);
+    }
 
-        return view('dashboard.dashboard', ['dashboard' => $results]);
+    public function apiGetApplicantList(Request $request){
+        Log::debug($request->all());
+        $query = "";
+        
+        if($request->jobId == -99){
+            $query.=  "SELECT A.job_apply_id, A.applicant_id, A.flg_qualified, A.flg_accept, B.name, B.email, B.phone_no, C.remark
+                        FROM t_job_apply A 
+                        INNER JOIN m_applicant B ON A.applicant_id = B.applicant_id
+                        LEFT JOIN t_activity C ON A.job_apply_id = C.job_apply_id
+                        WHERE C.activity_id IN( 
+                        SELECT MAX(activity_id) as activity_id
+                        FROM t_activity B
+                        GROUP BY B.job_apply_id) ";
+            
+                if($request->flgQualified == 'false')
+                    $query.=" AND A.flg_qualified = 'N' ";
+                else
+                    $query.=" AND A.flg_qualified = 'Y' ";
+                
+                if($request->flgAccepted == 'false')
+                    $query.=" AND A.flg_accept = 'N' ";
+                else
+                    $query.=" AND A.flg_accept = 'Y' ";
+            
+            Log::debug($query);
+            $results = DB::select(DB::raw($query));
+            
+        }else{
+            $query.="SELECT A.job_apply_id, A.applicant_id, A.flg_qualified, A.flg_accept, B.name, B.email, B.phone_no, C.remark
+            FROM t_job_apply A 
+            INNER JOIN m_applicant B ON A.applicant_id = B.applicant_id
+            LEFT JOIN t_activity C ON A.job_apply_id = C.job_apply_id
+            WHERE C.activity_id IN( 
+                    SELECT MAX(activity_id) as activity_id
+                    FROM t_activity B
+                    GROUP BY B.job_apply_id) 
+            AND A.job_id = $request->jobId";
+             
+                if($request->flgQualified == 'false')
+                    $query.=" AND A.flg_qualified = 'N' ";
+                else
+                    $query.=" AND A.flg_qualified = 'Y' ";
+                
+                if($request->flgAccepted == 'false')
+                    $query.=" AND A.flg_accept = 'N' ";
+                else
+                    $query.=" AND A.flg_accept = 'Y' ";
+            
+            Log::debug($query);
+            $results = DB::select(DB::raw($query));
+            
+        }
+      
+        $json = [
+            'status'=>'OK',
+            'result'=>$results
+        ];
+        return response()->json($json);
+    }
+    public function apiDownloadFileCv($id){
+        Log::debug($id);
+        
+        
+            $results = DB::select( DB::raw(
+                "SELECT file_path,file_type FROM m_applicant_file
+                WHERE applicant_id = $id AND file_name LIKE '%-cv'"));
+            
+            Log::debug($results);
+            return response()->download($results[0]->file_path);
+    }
+
+    public function apiDownloadOtherFile($id){
+        $results = DB::select( DB::raw(
+            "SELECT file_path,file_type FROM m_applicant_file
+            WHERE applicant_id = $id AND file_name NOT LIKE '%-cv'"));
+        
+        
+        foreach($results as $row){
+            $filePath[]=$row->file_path;
+        };
+
+        Zipper::make(storage_path('files/applicant-file.zip'))->add($filePath)->close();
+
+        return response()->download(storage_path('files/applicant-file.zip'));
+    }
+    public function apiSendEmail(Request $request){
+        Log::debug($request->all());
+        $data = $request->all();
+        $strdate = strtotime($data['meetingDate']);
+        $strtime = strtotime($data['meetingTime']);
+        $meetingDate = date('d-m-Y',$strdate);
+        $meetingTime = date('H:i',$strtime);
+        $data['meetingDate']=$meetingDate;
+        $data['meetingTime']=$meetingTime;
+       
+        Mail::send('template.email.email-halo', $data, function ($message) use($data) {
+            $message->from('shinosuke14@gmail.com', 'Kalvin Pratama');
+            $message->to($data['email'], $data['name']);
+            $message->subject('Test kirim email!');
+        });
+        
+
+        $json=[
+            'status'=>'OK'
+        ];
+        return response()->json($json);
+    }
+
+    public function apiGetHistoryActivity(Request $request){
+        Log::debug('Method api get history activity');
+        Log::debug($request->all());
+        
+        $results = Activity::where('job_apply_id','=',$request->job_apply_id)->get();
+        
+        Log::debug($results);
+        $json=[
+            'status'=>'OK',
+            'result'=>$results
+        ];
+        return response()->json($json);
     }
 }

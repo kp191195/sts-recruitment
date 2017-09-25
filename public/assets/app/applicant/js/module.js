@@ -2,13 +2,21 @@
     'use strict';
 
     angular
-        .module('app',[
+        .module('ApplicantApp',[
             'ui.router',
             'ui.bootstrap'
-        ],function($interpolateProvider) {
-            $interpolateProvider.startSymbol('<%');
-            $interpolateProvider.endSymbol('%>');
-        });
+        ])
+        .config(myConfig);
+        
+        function myConfig($stateProvider,$urlRouterProvider){
+            $stateProvider
+            .state('applicant', {
+                url: '/applicant/:jobId',
+                templateUrl: '/assets/app/applicant/views/applicant.html',
+                controller: 'ApplicantController'
+            });
+            $urlRouterProvider.otherwise("/applicant/-99");
+        }
 
     
 })();

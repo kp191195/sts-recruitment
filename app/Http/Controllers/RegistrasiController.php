@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Log;
 use Validator;
 use App\Applicant;
+use App\Activity;
 use App\ApplicantFile;
 use App\Job;
 use App\JobApply;
@@ -122,6 +123,21 @@ class RegistrasiController extends Controller
         $jobApply->update_datetime = $datetime;
         $jobApply->version = 0;
         $jobApply->save();
+
+        $activity = new Activity();
+        $activity->job_apply_id = $jobApply->job_apply_id;
+        $activity->pic_name = 'none';
+        $activity->flg_contacted_via = 'none';
+        $activity->activity_datetime = $date;
+        $activity->activity_description = 'Apply Job';
+        $activity->activity_location = ' ';
+        $activity->remark = 'Apply Job';
+        $activity->create_user_id = -1;
+        $activity->update_user_id = -1;
+        $activity->create_datetime = $datetime;
+        $activity->update_datetime = $datetime;
+        $activity->version = 0;
+        $activity->save();
 
     }
 }

@@ -26,10 +26,19 @@ Route::group(['middleware'=>'loggedUser'],function(){
     });    
 
     Route::get('/logout', 'DoLogoutController@logout');
-    Route::get('/dashboard', 'DashboardController@getDashboard');
+    Route::get('/dashboard', 'DashboardController@index');
     // Route::get('/applicant', 'ApplicantController@getApplicant');
-    Route::get('/applicant/{jid?}/', 'ApplicantController@getApplicantWtihParam');
+    Route::get('/applicant', 'ApplicantController@index');
     Route::get('/administration', 'AdministrationController@getAdministrationList');
     Route::get('/administrationDetail/{eid}/', 'AdministrationDetailController@getAdministrationDetail');
+
+    Route::post('/api/getDataApplicant','ApplicantController@apiGetDataApplicant');
+    Route::post('/api/getDataForDashboard','DashboardController@apiGetDataForDashboard');
+    Route::post('/api/getJobList','DashboardController@apiGetJobList');
+    Route::post('/api/getApplicantList','DashboardController@apiGetApplicantList');
+    Route::get('/api/downloadFileCv/{id}','DashboardController@apiDownloadFileCv');
+    Route::get('/api/downloadOtherFile/{id}','DashboardController@apiDownloadOtherFile');
+    Route::post('/api/sendEmail','DashboardController@apiSendEmail');
+    Route::post('/api/getHistoryActivity','DashboardController@apiGetHistoryActivity');
     
 });

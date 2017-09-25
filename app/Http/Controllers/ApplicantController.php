@@ -11,10 +11,13 @@ use Session;
 use App\MJob;
 use App\TJobApply;
 use \stdClass;
+use App\Applicant;
 
 class ApplicantController extends Controller
 {   
-    
+    public function index(){
+        return view('applicant.index');
+    }
     public function getApplicantWtihParam($jid = NULL)
     {
         Log::debug($jid);
@@ -47,6 +50,20 @@ class ApplicantController extends Controller
         Log::debug($results);
 
         return view('applicant.applicant', ['applicant' => $results,'job'=> $job, 'selectedJob' => $selectedJob]);
+    }
+
+    public function apiGetDataApplicant(Request $request)
+    {
+        Log::debug($request->all());
+        
+
+        $applicant = Applicant::find($request->id);
+        $json = [
+            'status'=>"OK",
+            'dataApplicant'=>$applicant
+        ];
+        return response()->json($json);
+        //return view('applicant.applicant', ['applicant' => $results,'job'=> $job, 'selectedJob' => $selectedJob]);
     }
 
 }
