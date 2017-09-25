@@ -13,6 +13,7 @@ use App\TJobApply;
 use Zipper;
 use Mail;
 use App\Activity;
+use Helpers\DateUtil;
 
 class DashboardController extends Controller
 {
@@ -167,6 +168,33 @@ class DashboardController extends Controller
             $message->subject('Test kirim email!');
         });
         
+
+        $json=[
+            'status'=>'OK'
+        ];
+        return response()->json($json);
+    }
+    public function apiSendNote(Request $request){
+        Log::debug($request->all());
+        $datetime = DateUtil::dateTimeNow();
+        $date = DateUtil::dateNow();
+        $jobApply = TJobApply::whereRaw('applicant_id = ?',[$request->applicantId])->first();
+        Log::debug($jobApply);
+
+        $activity = new Activity();
+        $activity->job_apply_id = $jobApply->job_apply_id;
+        $activity->pic_name = 'system';
+        $activity->flg_contacted_via = 'none';
+        $activity->activity_datetime = 'none';
+        $activity->activity_location = 'none';
+        $activity->activity_description  = $request->activity;
+        $activity->remark  = $request->remark;
+        $activity->create_user_id  = -1;
+        $activity->update_user_id  = -1;
+        $activity->create_datetime  = $datetime;
+        $activity->update_datetime  = $datetime;
+        $activity->version  = 0;
+        $activity->save();
 
         $json=[
             'status'=>'OK'

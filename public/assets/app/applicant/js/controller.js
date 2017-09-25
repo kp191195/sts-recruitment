@@ -9,7 +9,7 @@
         
         
     ApplicantController.$inject = ['$scope','$state','$stateParams','$window','$uibModal','ApplicantService'];
-    ApplicantModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','activeTab','dataForSendEmail','ApplicantService'];
+    ApplicantModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','activeTab','dataForSendEmail','dataForSendNote','ApplicantService'];
     ApplicantHistoryActivityModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','ApplicantService'];
    
     function ApplicantController($scope,$state,$stateParams,$window,$uibModal,ApplicantService){
@@ -142,6 +142,13 @@
           remark:"",
           note:""
       }
+      $scope.dataForSendNote = {
+        name:"",
+        email:"",
+        activity:"",
+        remark:"",
+        applicantId:""
+    }
       $scope.openModal = function(dataApplicant,activeTab){
           var modalInstance = $uibModal.open({
             animation: true,
@@ -159,11 +166,19 @@
                   },
                   dataForSendEmail: function (){
                       return $scope.dataForSendEmail;
+                  },
+                  dataForSendNote: function (){
+                      return $scope.dataForSendNote
                   }
             }
           });
       
-          modalInstance.result.then(function () {
+          modalInstance.result.then(function (response) {
+              if(response == 'OK'){
+                  console.log("ASD");
+                  getJobList();
+                  getApplicantListForFirstLoad();
+              }
               // $scope.picName = response;
               // console.log($scope.picName);
           }, function () {
@@ -196,7 +211,7 @@
 
   }
 
-  function ApplicantModalController($scope,$state,$uibModalInstance,applicantData,activeTab,dataForSendEmail,ApplicantService){
+  function ApplicantModalController($scope,$state,$uibModalInstance,applicantData,activeTab,dataForSendEmail,dataForSendNote,ApplicantService){
     console.log('Masuk ke controller modal');
     $scope.activityActive = false;
     $scope.noteActive = false;
@@ -208,6 +223,7 @@
     }
     $scope.applicantData = applicantData;
     $scope.dataForSendEmail = dataForSendEmail;
+    $scope.dataForSendNote = dataForSendNote
     $scope.dataForSendEmail.name = $scope.applicantData.name;
     $scope.dataForSendEmail.email = $scope.applicantData.email;
     $scope.dataForSendEmail.phone = $scope.applicantData.phone_no;
@@ -252,6 +268,26 @@
         },function(response){
             alert("Terjadi kesalahan pada server!");
         });
+    };
+
+    $scope.sendNote = function () {
+        $scope.dataForSendNote.applicantId =  $scope.applicantData.applicant_id;
+        $scope.dataForSendNote.name =  $scope.applicantData.name;
+        $scope.dataForSendNote.email =  $scope.applicantData.email;
+        console.log($scope.dataForSendNote);
+        ApplicantService.saveNote($scope.dataForSendNote)
+        .then(function(response){
+            if (response.status == 'OK'){
+                console.log(response);
+                $uibModalInstance.close(response.status);
+                // $scope.applicantList = response.result;
+            } else{
+                alert("Terjadi kesalahan pada server!");
+            }
+        },function(response){
+            alert("Terjadi kesalahan pada server!");
+        });
+
     };
 }
 

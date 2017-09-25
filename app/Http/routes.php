@@ -39,6 +39,7 @@ Route::group(['middleware'=>'loggedUser'],function(){
     Route::get('/api/downloadFileCv/{id}','DashboardController@apiDownloadFileCv');
     Route::get('/api/downloadOtherFile/{id}','DashboardController@apiDownloadOtherFile');
     Route::post('/api/sendEmail','DashboardController@apiSendEmail');
+    Route::post('/api/sendNote','DashboardController@apiSendNote');
     Route::post('/api/getHistoryActivity','DashboardController@apiGetHistoryActivity');
     
 });
