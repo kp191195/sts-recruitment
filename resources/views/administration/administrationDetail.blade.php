@@ -18,7 +18,7 @@
 
     <h2><Strong>ADMINISTRATION</Strong></h2>
     <br><br>
-
+    
     <div class="form-group">
         <div class="row">
             <div class="col-sm-3">
@@ -49,21 +49,26 @@
         </thead>
         <tbody>
         @foreach ($dataAdmin as $dataAdmin)
-                <tr>
-                    <td>{{$dataAdmin->sort_no}}</td>
-                    <td>{{$dataAdmin->parameter}}</td>
-                    <td>
-                        <select name="penerimaan" id="penerimaan" >
-                            @foreach($comboPenerimaan as $combo)
-                                <option value="{{$combo->sort_no}}">{{ $combo->parameter}}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>View</td>
-                </tr>
-            @endforeach            
+                
+            <tr>
+                <td>{{$dataAdmin->sort_no}}</td>
+                <td>{{$dataAdmin->parameter}}</td>
+                <td>
+                    <select name="penerimaan" id="penerimaan" >
+                        @foreach($comboPenerimaan as $combo)
+                            <option value="{{$combo->sort_no}}" {{ $combo->parameter == $dataAdmin->param ? 'selected="selected"' : '' }}>{{ $combo->parameter}}</option>
+                        @endforeach   
+                    </select>
+                </td>
+                <td>
+                    date
+                </td>
+            </tr>
+                
+             
+        @endforeach    
         </tbody>
     </table>
-
+    <input type="submit" value="Save"> <!-- blom ada action nya -->
     </div>
 @endsection
