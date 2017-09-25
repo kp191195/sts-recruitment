@@ -40,6 +40,8 @@ Route::group(['middleware'=>'loggedUser'],function(){
     Route::get('/api/downloadOtherFile/{id}','DashboardController@apiDownloadOtherFile');
     Route::post('/api/sendEmail','DashboardController@apiSendEmail');
     Route::post('/api/sendNote','DashboardController@apiSendNote');
+    Route::post('/api/updateQualified','DashboardController@apiUpdateQualified');
+    Route::post('/api/updateAccepted','DashboardController@apiUpdateAccepted');
     Route::post('/api/getHistoryActivity','DashboardController@apiGetHistoryActivity');
     
 });

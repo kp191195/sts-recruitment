@@ -13,6 +13,7 @@ use App\TJobApply;
 use Zipper;
 use Mail;
 use App\Activity;
+use App\MEmployee;
 use Helpers\DateUtil;
 
 class DashboardController extends Controller
@@ -212,6 +213,36 @@ class DashboardController extends Controller
         $json=[
             'status'=>'OK',
             'result'=>$results
+        ];
+        return response()->json($json);
+    }
+
+    public function apiUpdateQualified(Request $request){
+        Log::debug('Method api update qualified');
+        Log::debug($request->all());
+        
+        $results = TJobApply::where('applicant_id','=',$request->applicant_id)->update(['flg_qualified'=>'Y']);
+        
+        
+
+        $json=[
+            'status'=>'OK',
+
+        ];
+        return response()->json($json);
+    }
+
+    public function apiUpdateAccepted(Request $request){
+        Log::debug('Method api update qualified');
+        Log::debug($request->all());
+        
+        $results = TJobApply::where('applicant_id','=',$request->applicant_id)->update(['flg_accept'=>'Y']);
+        
+        $employee=new MEmployee();
+        
+
+        $json=[
+            'status'=>'OK',
         ];
         return response()->json($json);
     }
