@@ -72,3 +72,6 @@
     <input type="submit" value="Save"> <!-- blom ada action nya -->
     </div>
 @endsection
+@section('script')
+    <script src="/assets/app/administrasi/js/administrasi.js"></script>
+@endsection
