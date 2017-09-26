@@ -1,0 +1,49 @@
+<div class="container" id="top30">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-6">
+					<select id="aligncombo" ng-model="selectedCombo" ng-change="changedSelectedCombo(selectedCombo)">
+						<option value="">Pilih Combo</option>
+						<option ng-repeat='row in combo' value="{{row.combo_id}}">{{row.combo_name}}</option>
+					</select>
+				</div>
+				<div class="col-md-6 text-right">
+					<button class="btn btn-primary"  ng-click="openModal()">Add New Combo Value</button>
+				</div>			
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th>Combo ID</th>
+					      <th>Code</th>
+					      <th>Property Key</th>
+					      <th>Action</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>Mark</td>
+					      <td>Otto</td>
+					      <td>@mdo</td>
+					    </tr>
+					    <tr>
+					      <td>Jacob</td>
+					      <td>Thornton</td>
+					      <td>@fat</td>
+					    </tr>
+					    <tr>
+					      <td>Larry</td>
+					      <td>the Bird</td>
+					      <td>@twitter</td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

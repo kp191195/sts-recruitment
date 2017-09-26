@@ -16,7 +16,7 @@
                         <li><a href="/dashboard">Dasboard</a></li>
                         <li><a href="/applicant">Applicant</a></li>
                         <li><a href="/administration">Administration</a></li>
-                        <li><a href="#">Setting</a></li>
+                        <li><a href="/setting">Setting</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
