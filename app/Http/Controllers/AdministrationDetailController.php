@@ -102,6 +102,7 @@ class AdministrationDetailController extends Controller
             $adminData->save();
         }
 
-        return $this->getAdministrationDetail($eid);
+        // return $this->getAdministrationDetail($eid);
+        return redirect()->back();
     }
 }
