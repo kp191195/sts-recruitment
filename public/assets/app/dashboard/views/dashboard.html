@@ -1,24 +1,25 @@
 <div class="container">
-        
-            <table class="table" id="table" border="1">
-                <thead>
-                    <tr>
-                        <th class="text-center">Job</th>
-                        <th class="text-center">Applicant</th>
-                        <th class="text-center">Qualified</th>
-                        <th class="text-center">Accepted</th>
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody>    
-                    <tr ng-repeat="row in dataDashboard">
-                        <td>{{row.job_name}}</td>
-                        <td>{{row.count_applicant}}</td>
-                        <td>{{row.count_qualified}}</td>
-                        <td>{{row.count_accept}}</td>
-                        <td><a ui-sref="applicant({jobId:row.job_id})">view</a></td>   
-                    </tr>              
-                </tbody>
-            </table>
-        
+    <h2><Strong>DASHBOARD</Strong></h2>
+    <br><br>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-3 text-center">Job</div>
+                <div class="col-md-3 text-center">Applicant</div>
+                <div class="col-md-2 text-center">Qualified</div>
+                <div class="col-md-2 text-center">Accepted</div>
+                <div class="col-md-2 text-center">Action</div>
             </div>
+        </div>
+            <div class="panel-body">
+                    <div class="row" ng-repeat="row in dataDashboard">
+                        <div class="col-md-3 ">{{row.job_name}}</div>
+                        <div class="col-md-3 ">{{row.count_applicant}}</div>
+                        <div class="col-md-2 ">{{row.count_qualified}}</div>
+                        <div class="col-md-2 ">{{row.count_accept}}</div>
+                        <div class="col-md-2 "><a ui-sref="applicant({jobId:row.job_id})">view</a></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

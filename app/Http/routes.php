@@ -31,7 +31,7 @@ Route::group(['middleware'=>'loggedUser'],function(){
     Route::get('/applicant', 'ApplicantController@index');
     Route::get('/administration', 'AdministrationController@getAdministrationList');
     Route::get('/administrationDetail/{eid}/', 'AdministrationDetailController@getAdministrationDetail');
-    Route::get('/updateAdminDetail/{eid}/{id?}', 'AdministrationDetailController@updateAdministrationDetail');
+    Route::get('/updateAdminDetail/{eid}/{id}/{adminName}/{status}', 'AdministrationDetailController@updateAdministrationDetail');
 
     Route::post('/api/getDataApplicant','ApplicantController@apiGetDataApplicant');
     Route::post('/api/getDataForDashboard','DashboardController@apiGetDataForDashboard');
