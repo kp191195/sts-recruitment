@@ -14,6 +14,7 @@
 </style>
 @endsection
 @section('content')
+
     <div class="container">
 
     <h2><Strong>ADMINISTRATION</Strong></h2>
@@ -44,7 +45,7 @@
                 <th class="text-center">No</th>
                 <th class="text-center">Item Check List</th>
                 <th class="text-center">Penerimaan</th>
-                <th class="text-center">Tanggal Penerimaan</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -52,23 +53,21 @@
                 
             <tr>
                 <td>{{$dataAdmin->sort_no}}</td>
-                <td>{{$dataAdmin->parameter}}</td>
+                <td>{{$dataAdmin->admin_combo_param}}</td>
                 <td>
-                    <select name="penerimaan" id="penerimaan" >
+                    <select name="penerimaan" id="terima" >
                         @foreach($comboPenerimaan as $combo)
-                            <option value="{{$combo->sort_no}}" {{ $combo->parameter == $dataAdmin->param ? 'selected="selected"' : '' }}>{{ $combo->parameter}}</option>
+                            <option value="{{$combo->parameter}}" {{ $combo->parameter == $dataAdmin->received_data_param ? 'selected="selected"' : '' }}>{{ $combo->parameter}}</option>
                         @endforeach   
                     </select>
                 </td>
                 <td>
-                    date
+                    <a href="/updateAdminDetail/{{$employeeId}}/{{$dataAdmin->id}}"> <input type="submit" value="Save"></a>
                 </td>
             </tr>
-                
-             
         @endforeach    
         </tbody>
     </table>
-    <input type="submit" value="Save"> <!-- blom ada action nya -->
     </div>
+
 @endsection
