@@ -71,7 +71,7 @@
                 var request = $http({
                     method : 'POST',
                     url : '/api/getComboValueList',
-                    input : input
+                    params : input
                 });
                 return( request.then( handleSuccess, handleError ) );    
         }

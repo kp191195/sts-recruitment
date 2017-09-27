@@ -37,24 +37,24 @@ class AdministrationDetailController extends Controller
         // cari list administrasi
         $dataAdmin = DB::select( DB::raw(" 
         WITH penerimaan AS (
-            select  B.sort_no, B.parameter
+            select  B.sort_no, B.value
             from t_combo A
             INNER JOIN t_combo_value B ON A.combo_id = B.combo_id
             WHERE A.combo_name = 'RECEIVED_DATA'
             Order by B.sort_no
         )
-        select COALESCE(C.administration_id, -99) as id, B.sort_no, B.parameter AS admin_combo_param, COALESCE( D.parameter , 'Belum Penerimaan')AS received_data_param
+        select COALESCE(C.administration_id, -99) as id, B.sort_no, B.value AS admin_combo_param, COALESCE( D.value , 'Belum Penerimaan')AS received_data_param
         from t_combo A
         INNER JOIN t_combo_value B ON A.combo_id = B.combo_id
-        LEFT JOIN m_administration C ON B.parameter = C.administration_name AND C.employee_id = ".$eid."
-        LEFT JOIN penerimaan D ON C.administration_status = D.parameter
+        LEFT JOIN m_administration C ON B.value = C.administration_name AND C.employee_id = ".$eid."
+        LEFT JOIN penerimaan D ON C.administration_status = D.value
         WHERE A.combo_name = 'ADMINISTRATION'
         Order by B.sort_no ")); 
         Log::debug($dataAdmin);
 
         //cari list combo penerimaan
         $comboPenerimaan = DB::select( DB::raw(" 
-        select  B.sort_no, B.parameter
+        select  B.sort_no, B.value AS parameter
         from t_combo A
         INNER JOIN t_combo_value B ON A.combo_id = B.combo_id
         WHERE A.combo_name = 'RECEIVED_DATA'

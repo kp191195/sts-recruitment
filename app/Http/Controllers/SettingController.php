@@ -30,7 +30,7 @@ class SettingController extends Controller
     {
     	Log::Debug("LINE 31");
     	Log::Debug($request->all());
-    	$combo = TComboValue::find($request->id);
+    	$combo = TComboValue::find($request->combo_id);
     	$json = [
     		"status" => 'OK',
     		"result" =>$combo

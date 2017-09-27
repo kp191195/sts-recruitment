@@ -27,7 +27,8 @@
 
       $scope.changedSelectedCombo = function(selectedCombo){
         console.log("selected combo = "+selectedCombo);
-        SettingService.getComboValueList(selectedCombo).then(function(response){
+        var input = {combo_id:selectedCombo};
+        SettingService.getComboValueList(input).then(function(response){
           console.log("line 30");
           console.log(response);
         });
