@@ -43,7 +43,7 @@ class AdministrationDetailController extends Controller
             WHERE A.combo_name = 'RECEIVED_DATA'
             Order by B.sort_no
         )
-        select  B.sort_no, B.parameter, C.employee_id, D.parameter AS param, C.update_datetime
+        select COALESCE(C.administration_id, -99) as id, B.sort_no, B.parameter AS admin_combo_param, COALESCE( D.parameter , 'Belum Penerimaan')AS received_data_param
         from t_combo A
         INNER JOIN t_combo_value B ON A.combo_id = B.combo_id
         LEFT JOIN m_administration C ON B.parameter = C.administration_name AND C.employee_id = ".$eid."
@@ -61,14 +61,48 @@ class AdministrationDetailController extends Controller
         Order by B.sort_no "));
         Log::debug($comboPenerimaan);
 
-
         Log::debug("testtt");
         //cari data admnistrasi employee
         $administration = MAdministration::where('employee_id',$eid)->get();
         Log::debug($administration);
 
         return view('administration.administrationDetail', ['name' => $applicant->name,'job'=> $job->job_name, 'email' => $applicant->email, 
-                                                            'qualified'=> $jobApply->flg_qualified, 'dataAdmin' => $dataAdmin, 'comboPenerimaan' => $comboPenerimaan]);
+                                                            'qualified'=> $jobApply->flg_qualified, 'dataAdmin' => $dataAdmin, 'comboPenerimaan' => $comboPenerimaan,
+                                                            'employeeId'=>$eid]);
     }
 
+    public function updateAdministrationDetail($eid, $id, $adminName, $status)
+    {
+        Log::debug($eid);
+        Log::debug($id);
+        Log::debug($adminName);
+        Log::debug($status);
+        $mytime = \Carbon\Carbon::now();
+        Log::debug($mytime);
+        Log::debug($mytime->format('YmdHis'));
+        
+        if($id != -99 && $status != 'undefined'){
+            Log::debug(" masuk update ");
+            $adminData = MAdministration::find($id);
+            $adminData->administration_status = $status;
+            $adminData->update_datetime = $mytime->format('YmdHis');
+            $adminData->save();
+        }else if($id == -99 && $status != 'undefined'){
+            Log::debug(" masuk insert ");
+            $adminData = new MAdministration;
+            $adminData->employee_id = $eid;
+            $adminData->administration_name = $adminName;
+            $adminData->administration_status = $status;
+            $adminData->create_user_id = 1;
+            $adminData->create_datetime =  $mytime->format('YmdHis');
+            $adminData->update_user_id = 1;
+            $adminData->update_datetime =  $mytime->format('YmdHis');
+            $adminData->version = 0;
+            Log::debug($adminData);
+            $adminData->save();
+        }
+
+        // return $this->getAdministrationDetail($eid);
+        return redirect()->back();
+    }
 }
