@@ -266,7 +266,8 @@
 
             var request = $http({
                 method : 'POST',
-                url : '/api/getComboForAcceptModal'
+                url : '/api/getComboForAcceptModal',
+                params:input
             });
             return( request.then( handleSuccess, handleError ) );
 

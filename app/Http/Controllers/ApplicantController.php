@@ -68,15 +68,18 @@ class ApplicantController extends Controller
         //return view('applicant.applicant', ['applicant' => $results,'job'=> $job, 'selectedJob' => $selectedJob]);
     }
 
-    public function apiGetComboForAcceptModal(){
-
+    public function apiGetComboForAcceptModal(Request $request){
+        Log::debug($request->all());
         $listComboValue = DB::select(DB::raw("
             SELECT A.combo_name,B.key,B.value
             FROM t_combo A INNER JOIN t_combo_value B ON A.combo_id = B.combo_id
             WHERE combo_name IN('COMBO_MEMBERSHIP','COMBO_DOMISILI','COMBO_SPV')
         "));
 
-        Log::debug($listComboValue);
+        $jobApply = TJobApply::find($request->id);
+        
+        $job = MJob::find($jobApply->job_id);
+        
         $membership = [];
         $domisili = [];
         $spv = [];
@@ -95,7 +98,8 @@ class ApplicantController extends Controller
         $result = [
             'comboMembership'=> $membership,
             'comboDomisili'=> $domisili,
-            'comboSpv'=>$spv
+            'comboSpv'=>$spv,
+            'jobName'=>$job->job_name
         ];
 
         Log::debug($result);

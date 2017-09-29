@@ -381,21 +381,27 @@ function ApplicantAcceptedModalController($scope,$state,$uibModalInstance,applic
     console.log(applicantData);
     $scope.combo = undefined;
     $scope.accept = {
+        applicantName:applicantData.name,
         applicantId:applicantData.applicant_id,
         jobApplyId:applicantData.job_apply_id,
+        jobName:"",
         joinDate:"",
         startDate:"",
         placement:"",
         membership:"",
         supervisor:"",
     };
-    getComboForAcceptModal();
+    var dataInput = {
+        id:applicantData.job_apply_id
+    }
+    getComboForAcceptModal(dataInput);
 
-    function getComboForAcceptModal(){
-        ApplicantService.getComboForAcceptModal()
+    function getComboForAcceptModal(data){
+        ApplicantService.getComboForAcceptModal(data)
             .then(function(response){
                 console.log(response);
                 $scope.combo = response.result;
+                $scope.accept.jobName=response.result.jobName; 
             },function(response){
                 alert("Terjadi kesalahan pada server!");
             });
