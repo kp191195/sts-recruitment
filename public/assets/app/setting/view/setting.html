@@ -9,7 +9,7 @@
 					</select>
 				</div>
 				<div class="col-md-6 text-right">
-					<button class="btn btn-primary"  ng-click="openModal()">Add New Combo Value</button>
+					<button class="btn btn-primary"  ng-click="openModal(selectedCombo)">Add New Combo Value</button>
 				</div>			
 			</div>
 			<hr>
@@ -25,21 +25,14 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <td>Mark</td>
-					      <td>Otto</td>
-					      <td>@mdo</td>
+					    <tr ng-repeat ="combo in comboList">
+					      <td>{{combo.combo_name}}</td>
+					      <td>{{combo.key}}</td>
+					      <td>{{combo.value}}</td>
+					      <td><a href=""><i >Edit</i></td>
+					      <td><a href=""><i >Delete</i></td>
 					    </tr>
-					    <tr>
-					      <td>Jacob</td>
-					      <td>Thornton</td>
-					      <td>@fat</td>
-					    </tr>
-					    <tr>
-					      <td>Larry</td>
-					      <td>the Bird</td>
-					      <td>@twitter</td>
-					    </tr>
+					    
 					  </tbody>
 					</table>
 				</div>

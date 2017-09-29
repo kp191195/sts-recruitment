@@ -1,7 +1,31 @@
 <div class="modal-header" id="modal-body">
-        TEST
+	Add New Combo Value
 </div>
-
 <div class="modal-body" id="modal-body">
-       TEST 
+       <form class="form-horizontal">
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">Combo</label>
+       			<div class="col-md-9">
+       				<p class="form-control-static">{{combo.combo_name}}</p>
+       			</div>
+       		</div>
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">KEY</label>
+       			<div class="col-md-9">
+       				<input type="text" ng-model="key">
+       			</div>
+       		</div>
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">VALUE</label>
+       			<div class="col-md-9">
+       				<input type="text" class="form-control" ng-model="value">
+       			</div>
+       		</div>
+       		<div class="form-group">
+       			<div class="col-md-8 col-sm-offset-3">
+       				<button class="btn btn-success" ng-click="insertComboValue()">Submit</button>
+       				<button class="btn btn-cancel" ng-click="cancel()">Cancel</button>
+       			</div>
+       		</div>
+       </form>
 </div>

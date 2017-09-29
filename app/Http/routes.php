@@ -50,4 +50,8 @@ Route::group(['middleware'=>'loggedUser'],function(){
 
     Route::get('/api/getCombo','SettingController@apiGetCombo');
     Route::post('/api/getComboValueList','SettingController@apiGetComboValueList');
+    Route::post('/api/getComboName','SettingController@apiGetComboName');
+    Route::post('/api/insertComboValue','SettingController@apiAddNewComboValue');
+
+
 });
