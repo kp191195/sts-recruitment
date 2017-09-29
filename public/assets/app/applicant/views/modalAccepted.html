@@ -1,0 +1,77 @@
+<div class="modal-header" id="modal-body">
+	Accept Employee
+</div>
+<div class="modal-body" id="modal-body">
+       <form class="form-horizontal">
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">Name</label>
+       			<div class="col-md-9">
+       				<p class="form-control-static">Jihan Fahira</p>
+       			</div>
+       		</div>
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">Job Apply</label>
+       			<div class="col-md-9">
+                    <p class="form-control-static">Java Developer</p>
+       			</div>
+            </div>
+               
+       		<div class="form-group">
+       			<label class="col-md-3 control-label">Join Date</label>
+       			<div class="col-md-9">
+                    <p class="input-group">
+                        <input type="text" ng-model="accept.joinDate" class="form-control" uib-datepicker-popup="{{format}}" is-open="status.opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+       		    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Start Date</label>
+                <div class="col-md-9">
+                    <p class="input-group">
+                        <input type="text" ng-model="accept.startDate" class="form-control" uib-datepicker-popup="{{format}}" is-open="status2.opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Placement</label>
+                <div class="col-md-9">
+                    <select class="form-control" ng-model="accept.placement">
+                        <option ng-repeat="item in combo.comboDomisili" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Membership</label>
+                <div class="col-md-9">
+                    <select class="form-control" ng-model="accept.membership">
+                            <option ng-repeat="item in combo.comboMembership" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Supervisor</label>
+                <div class="col-md-9">
+                    <select class="form-control" ng-model="accept.supervisor" >
+                            <option ng-repeat="item in combo.comboSpv" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+
+       		<div class="form-group">
+       			<div class="col-md-8 col-sm-offset-3">
+       				<button class="btn btn-success" ng-click="acceptEmployee()">Submit</button>
+       				<button class="btn btn-cancel" ng-click="cancel()">Cancel</button>
+       			</div>
+       		</div>
+       </form>
+</div>

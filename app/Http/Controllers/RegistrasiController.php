@@ -18,8 +18,8 @@ use Ramsey\Uuid\Uuid;
 class RegistrasiController extends Controller
 {
     //
-    public function index(){
-        return view('registration.index');
+    public function index($jobId,$jobName,$jobDesc){
+        return view('registration.index')->with('jobId',$jobId)->with('jobName',$jobName)->with('jobDesc',$jobDesc);
     }
 
     public function addApplicant(Request $request){

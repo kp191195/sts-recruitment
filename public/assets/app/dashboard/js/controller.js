@@ -181,23 +181,23 @@
                 alert("Terjadi kesalahan pada server!");
             });
         }
-        $scope.updateAccepted = function(dataApplicant){
-            DashboardService.updateAccepted(dataApplicant)
-            .then(function(response){
-                if (response.status == 'OK'){
-                    getJobList();
-                    getApplicantListForFirstLoad();
-                    //console.log(response);
-                    //$scope.dataHistoryActivity = response.result;
-                    //$uibModalInstance.dismiss('cancel');
-                    // $scope.applicantList = response.result;
-                } else{
-                    alert("Terjadi kesalahan pada server!");
-                }
-            },function(response){
-                alert("Terjadi kesalahan pada server!");
-            });
-        }
+        // $scope.updateAccepted = function(dataApplicant){
+        //     DashboardService.updateAccepted(dataApplicant)
+        //     .then(function(response){
+        //         if (response.status == 'OK'){
+        //             getJobList();
+        //             getApplicantListForFirstLoad();
+        //             //console.log(response);
+        //             //$scope.dataHistoryActivity = response.result;
+        //             //$uibModalInstance.dismiss('cancel');
+        //             // $scope.applicantList = response.result;
+        //         } else{
+        //             alert("Terjadi kesalahan pada server!");
+        //         }
+        //     },function(response){
+        //         alert("Terjadi kesalahan pada server!");
+        //     });
+        // }
         $scope.openModal = function(dataApplicant,activeTab){
             var modalInstance = $uibModal.open({
               animation: true,

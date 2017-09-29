@@ -8,12 +8,12 @@
     <title>Home | Corlate</title>
 	
     <!-- core CSS -->
-    <link href="assets/corlate-free-template/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/animate.min.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/prettyPhoto.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/main.css" rel="stylesheet">
-    <link href="assets/corlate-free-template/css/responsive.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/animate.min.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/main.css" rel="stylesheet">
+    <link href="/assets/corlate-free-template/css/responsive.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="assets/corlate-free-template/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/corlate-free-template/images/ico/apple-touch-icon-144-precomposed.png">
@@ -48,9 +48,9 @@
         <hr>
         <form class="form-horizontal" action="/applyJob" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
-            <input type="hidden" name="jobId" value="1">
-            <input type="hidden" name="jobName" value="JAVA DEVELOPER">
-            <input type="hidden" name="jobDesc" value="SEBUAH JOB UNTUK JAVA DEVELOPER. YAH POKOKNYA OKE LAH!">
+            <input type="hidden" name="jobId" value="{{$jobId}}">
+            <input type="hidden" name="jobName" value="{{$jobName}}">
+            <input type="hidden" name="jobDesc" value="{{$jobDesc}}">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="txtName">Name:</label>
                 <div class="col-sm-4">
@@ -98,12 +98,12 @@
         </form>
     </div>
 
-        <script src="assets/corlate-free-template/js/jquery.js"></script>
-        <script src="assets/corlate-free-template/js/bootstrap.min.js"></script>
-        <script src="assets/corlate-free-template/js/jquery.prettyPhoto.js"></script>
-        <script src="assets/corlate-free-template/js/jquery.isotope.min.js"></script>
-        <script src="assets/corlate-free-template/js/main.js"></script>
-        <script src="assets/corlate-free-template/js/wow.min.js"></script>
+        <script src="/assets/corlate-free-template/js/jquery.js"></script>
+        <script src="/assets/corlate-free-template/js/bootstrap.min.js"></script>
+        <script src="/assets/corlate-free-template/js/jquery.prettyPhoto.js"></script>
+        <script src="/assets/corlate-free-template/js/jquery.isotope.min.js"></script>
+        <script src="/assets/corlate-free-template/js/main.js"></script>
+        <script src="/assets/corlate-free-template/js/wow.min.js"></script>
         <script>
             $(document).ready(function() {
             var max_fields      = 10; //maximum input boxes allowed
