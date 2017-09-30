@@ -80,6 +80,8 @@ class AdministrationDetailController extends Controller
         $mytime = \Carbon\Carbon::now();
         Log::debug($mytime);
         Log::debug($mytime->format('YmdHis'));
+
+        $session = Session::get('sessionUser');
         
         if($id != -99 && $status != 'undefined'){
             Log::debug(" masuk update ");
@@ -93,9 +95,9 @@ class AdministrationDetailController extends Controller
             $adminData->employee_id = $eid;
             $adminData->administration_name = $adminName;
             $adminData->administration_status = $status;
-            $adminData->create_user_id = 1;
+            $adminData->create_user_id = $session['user_id'];
             $adminData->create_datetime =  $mytime->format('YmdHis');
-            $adminData->update_user_id = 1;
+            $adminData->update_user_id = $session['user_id'];
             $adminData->update_datetime =  $mytime->format('YmdHis');
             $adminData->version = 0;
             Log::debug($adminData);

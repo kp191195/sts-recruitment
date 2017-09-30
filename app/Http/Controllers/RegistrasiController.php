@@ -139,5 +139,7 @@ class RegistrasiController extends Controller
         $activity->version = 0;
         $activity->save();
 
+        return view('registration.index')->with('jobId',$input['jobId'])->with('jobName',$input['jobName'])->with('jobDesc',$input['jobDesc']);
+
     }
 }
