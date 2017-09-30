@@ -52,6 +52,9 @@ Route::group(['middleware'=>'loggedUser'],function(){
     Route::post('/api/getComboValueList','SettingController@apiGetComboValueList');
     Route::post('/api/getComboName','SettingController@apiGetComboName');
     Route::post('/api/insertComboValue','SettingController@apiAddNewComboValue');
+    Route::post('/api/getComboValueByID','SettingController@apiGetComboValueByID');
+    Route::post('/api/updateComboValue','SettingController@apiUpdateComboValue');
+    Route::post('/api/deleteComboValue','SettingController@apiDeleteComboValue');
 
     Route::post('/api/getComboForAcceptModal','ApplicantController@apiGetComboForAcceptModal');
     Route::post('/api/addEmployee','ApplicantController@apiAddEmployee');

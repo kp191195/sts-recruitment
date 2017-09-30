@@ -1,5 +1,5 @@
 <div class="modal-header" id="modal-body">
-	Add New Combo Value
+	Edit Combo Value
 </div>
 <div class="modal-body" id="modal-body">
        <div ng-if="status.status =='OK'">
@@ -7,6 +7,7 @@
                      <strong>{{status.message}} </strong>
               </div>
        </div>
+       
        <form class="form-horizontal">
        		<div class="form-group">
        			<label class="col-md-3 control-label">Combo</label>
@@ -28,7 +29,7 @@
        		</div>
        		<div class="form-group">
        			<div class="col-md-8 col-sm-offset-3">
-       				<button class="btn btn-success" ng-click="insertComboValue()">Submit</button>
+       				<button class="btn btn-success" ng-click="updateCombo()">Submit</button>
        				<button class="btn btn-cancel" ng-click="cancel()">Cancel</button>
        			</div>
        		</div>
