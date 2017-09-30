@@ -15,7 +15,8 @@
             getHistoryActivity: getHistoryActivity,
             saveNote: saveNote,
             updateQualified: updateQualified,
-            updateAccepted: updateAccepted
+            addEmployee:addEmployee,
+            getComboForAcceptModal:getComboForAcceptModal
         }
 
         return service;
@@ -210,7 +211,7 @@
 
             
         }
-        function updateAccepted(input) {
+        function addEmployee(input) {
             // implementation details go here
             function handleError( response ) {
                 // The API response from the server should be returned in a
@@ -233,7 +234,39 @@
 
             var request = $http({
                 method : 'POST',
-                url : '/api/updateAccepted',
+                url : '/api/addEmployee',
+                params:input
+            });
+            return( request.then( handleSuccess, handleError ) );
+
+
+            
+        }
+
+        function getComboForAcceptModal(input) {
+            // implementation details go here
+            function handleError( response ) {
+                // The API response from the server should be returned in a
+                // nomralized format. However, if the request was not handled by the
+                // server (or what not handles properly - ex. server error), then we
+                // may have to normalize it on our end, as best we can.
+                if (! angular.isObject( response.data ) ||	! response.data.message) {
+                    return( $q.reject( "Server gagal dihubungi. Hubungi Administrator" ) );
+                }
+
+                // Otherwise, use expected error message.
+                return( $q.reject( response.data.message ) );
+            }
+                
+            // I transform the successful response, unwrapping the application data
+            // from the API response payload.
+            function handleSuccess( response ) {
+                return( response.data );
+            }
+
+            var request = $http({
+                method : 'POST',
+                url : '/api/getComboForAcceptModal',
                 params:input
             });
             return( request.then( handleSuccess, handleError ) );

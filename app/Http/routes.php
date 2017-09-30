@@ -15,7 +15,7 @@ Route::get('/', function () {
     //
     return view('login.login');
 });
-Route::get('/registrasi', 'RegistrasiController@index');
+Route::get('/registrasi/{jobId}/{jobName}/{jobDesc}', 'RegistrasiController@index');
 
 Route::post('/getLogins', 'DoLoginController@getLogins');
 Route::post('/applyJob', 'RegistrasiController@addApplicant');
@@ -52,6 +52,9 @@ Route::group(['middleware'=>'loggedUser'],function(){
     Route::post('/api/getComboValueList','SettingController@apiGetComboValueList');
     Route::post('/api/getComboName','SettingController@apiGetComboName');
     Route::post('/api/insertComboValue','SettingController@apiAddNewComboValue');
+
+    Route::post('/api/getComboForAcceptModal','ApplicantController@apiGetComboForAcceptModal');
+    Route::post('/api/addEmployee','ApplicantController@apiAddEmployee');
 
 
 });

@@ -6,12 +6,14 @@
         .controller('DashboardController', DashboardController)
         .controller('DashboardApplicantController', DashboardApplicantController)
         .controller('DashboardApplicantModalController', DashboardApplicantModalController)
-        .controller('DashboardApplicantHistoryActivityModalController', DashboardApplicantHistoryActivityModalController);
+        .controller('DashboardApplicantHistoryActivityModalController', DashboardApplicantHistoryActivityModalController)
+        .controller('DashboardApplicantAcceptedModalController',DashboardApplicantAcceptedModalController);
         
     DashboardController.$inject = ['$scope','$state','DashboardService'];
     DashboardApplicantController.$inject = ['$scope','$state','$stateParams','$window','$uibModal','DashboardService'];
     DashboardApplicantModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','activeTab','dataForSendEmail','dataForSendNote','DashboardService'];
-    DashboardApplicantHistoryActivityModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','DashboardService'];
+    DashboardApplicantHistoryActivityModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','DashboardService']
+    DashboardApplicantAcceptedModalController.$inject = ['$scope','$state','$uibModalInstance','applicantData','DashboardService'];
 
     function DashboardController($scope,$state,DashboardService){
         console.log('Masuk ke main dashboard controller');
@@ -181,23 +183,23 @@
                 alert("Terjadi kesalahan pada server!");
             });
         }
-        $scope.updateAccepted = function(dataApplicant){
-            DashboardService.updateAccepted(dataApplicant)
-            .then(function(response){
-                if (response.status == 'OK'){
-                    getJobList();
-                    getApplicantListForFirstLoad();
-                    //console.log(response);
-                    //$scope.dataHistoryActivity = response.result;
-                    //$uibModalInstance.dismiss('cancel');
-                    // $scope.applicantList = response.result;
-                } else{
-                    alert("Terjadi kesalahan pada server!");
-                }
-            },function(response){
-                alert("Terjadi kesalahan pada server!");
-            });
-        }
+        // $scope.updateAccepted = function(dataApplicant){
+        //     DashboardService.updateAccepted(dataApplicant)
+        //     .then(function(response){
+        //         if (response.status == 'OK'){
+        //             getJobList();
+        //             getApplicantListForFirstLoad();
+        //             //console.log(response);
+        //             //$scope.dataHistoryActivity = response.result;
+        //             //$uibModalInstance.dismiss('cancel');
+        //             // $scope.applicantList = response.result;
+        //         } else{
+        //             alert("Terjadi kesalahan pada server!");
+        //         }
+        //     },function(response){
+        //         alert("Terjadi kesalahan pada server!");
+        //     });
+        // }
         $scope.openModal = function(dataApplicant,activeTab){
             var modalInstance = $uibModal.open({
               animation: true,
@@ -256,6 +258,33 @@
             }, function () {
               console.log('Modal dismissed at: ' + new Date());
             });
+          };
+
+          $scope.openModalAccepted = function(dataApplicant){
+            var modalInstance = $uibModal.open({
+              animation: true,
+              ariaLabelledBy: 'modal-title',
+              ariaDescribedBy: 'modal-body',
+              templateUrl: '/assets/app/applicant/views/modalAccepted.html',
+              controller: 'DashboardApplicantAcceptedModalController',
+              size:'lg',
+              resolve: {
+                    applicantData: function () {
+                        return dataApplicant;
+                    }
+              }
+            });
+        
+            modalInstance.result.then(function (response) {
+                if(response == 'OK'){
+                    console.log("ASD");
+                    getJobList();
+                    getApplicantListForFirstLoad();
+                }
+            }, function () {
+              console.log('Modal dismissed at: ' + new Date());
+            });
+            console.log("ini method loooo");
           };
 
     }
@@ -359,6 +388,83 @@
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
           };
+    }
+
+    function DashboardApplicantAcceptedModalController($scope,$state,$uibModalInstance,applicantData,DashboardService){
+        console.log('Masuk ke controller history activity modal');
+        console.log(applicantData);
+        $scope.combo = undefined;
+        $scope.accept = {
+            applicantName:applicantData.name,
+            applicantId:applicantData.applicant_id,
+            jobApplyId:applicantData.job_apply_id,
+            jobName:"",
+            joinDate:"",
+            startDate:"",
+            placement:"",
+            membership:"",
+            supervisor:"",
+        };
+        var dataInput = {
+            id:applicantData.job_apply_id
+        }
+        getComboForAcceptModal(dataInput);
+    
+        function getComboForAcceptModal(data){
+            DashboardService.getComboForAcceptModal(data)
+                .then(function(response){
+                    console.log(response);
+                    $scope.combo = response.result;
+                    $scope.accept.jobName=response.result.jobName; 
+                },function(response){
+                    alert("Terjadi kesalahan pada server!");
+                });
+            
+        }
+    
+        $scope.status = {
+            opened: false
+          };
+          $scope.status2 = {
+            opened: false
+          };
+        $scope.format = 'dd-MMMM-yyyy';
+        $scope.minDate = $scope.minDate ? null : new Date();
+        $scope.dateOptions = {
+          formatYear: 'yy',
+          startingDay: 1
+        };
+        $scope.disabled = function(date, mode) {
+          return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+        };
+        $scope.open = function($event) {
+            $scope.status.opened = true;
+        };
+    
+        $scope.open2 = function($event) {
+            $scope.status2.opened = true;
+        };
+    
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+    
+          $scope.acceptEmployee = function () {
+            console.log("HALO");
+            console.log($scope.accept);
+    
+            DashboardService.addEmployee($scope.accept)
+                .then(function(response){
+                    console.log(response);
+                    $scope.combo = response.result;
+                    $uibModalInstance.close(response.status);
+                },function(response){
+                    alert("Terjadi kesalahan pada server!");
+                });
+    
+            
+          };
+        
     }
 
 })();
