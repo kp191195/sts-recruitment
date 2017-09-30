@@ -15,8 +15,9 @@ class CreateTComboValueTable extends Migration
         Schema::create('t_combo_value', function (Blueprint $table) {
             $table->bigIncrements('combo_value_id');
             $table->bigInteger('combo_id');
-            $table->string('parameter',255);
             $table->string('sort_no',20);
+            $table->string('key',100);
+            $table->string('value',100);
             $table->bigInteger('create_user_id');
             $table->string('create_datetime',14);
             $table->bigInteger('update_user_id');
