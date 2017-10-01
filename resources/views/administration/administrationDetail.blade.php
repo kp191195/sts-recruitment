@@ -13,7 +13,7 @@
 }
 
 #headerAdminstration{
-    background: #ddd;
+    /*background: #ddd;*/
     margin-bottom: 30px;
 }
 
@@ -28,6 +28,7 @@
 
     <div class="container" ng-app="AdministrasiApp" ng-controller="AdministrasiCtrl" >
         <h2><Strong>ADMINISTRATION</Strong></h2>
+    <div class="panel panel-default">     
         <div class="panel-body">
             <div id="headerAdminstration">
                 <div class="row" >
@@ -83,7 +84,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>        
+        </div>
+    </div>            
 </div>
 @endsection
 @section('script')

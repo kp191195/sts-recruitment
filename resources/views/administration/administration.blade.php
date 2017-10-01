@@ -15,7 +15,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <h2><Strong>ADMINISTRATION</Strong></h2>
+    <h2><Strong>Administration</Strong></h2>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
