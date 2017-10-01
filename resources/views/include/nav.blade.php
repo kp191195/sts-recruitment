@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="/assets/corlate-free-template/images/logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="#"><img src="/assets/corlate-free-template/images/sts-logo.png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">

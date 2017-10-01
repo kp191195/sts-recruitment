@@ -15,7 +15,7 @@
         <link href="/assets/corlate-free-template/css/main.css" rel="stylesheet">
         <link href="/assets/corlate-free-template/css/responsive.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="/assets/corlate-free-template/images/ico/favicon.ico">
+        <link rel="shortcut icon" href="assets/corlate-free-template/images/logo-sts.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/corlate-free-template/images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/corlate-free-template/images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/corlate-free-template/images/ico/apple-touch-icon-72-precomposed.png">
