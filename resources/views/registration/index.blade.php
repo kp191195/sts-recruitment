@@ -21,82 +21,87 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/corlate-free-template/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/corlate-free-template/images/ico/apple-touch-icon-57-precomposed.png">
     <style>
-        .container-content{
-            background-color:#c4e9f2;
-            position:fixed;
-            top: 50%;
-            left: 50%;
-            width:100em;
-            height:70em;
-            margin-top: -35em; /*set to a negative number 1/2 of your height*/
-            margin-left: -50em; /*set to a negative number 1/2 of your width*/
-            border: 1px solid #ccc;
-            
+
+        body
+        {
+            background-color: #CBFEBC;
         }
+
+       #appliedJob{
+            background-color: #FFF;
+            margin: auto;
+            margin-top: 40px;
+            height: auto;
+            width: 600px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 25px;
+       }
+
+       h2{
+        margin-bottom: 35px;
+       }
+
+       .margintop
+       {
+        margin-top: 10px;
+       }
     </style>
 </head>
 
 <body>
-    <div class="container-content">
-        <div class="center wow fadeInDown">
-				<h2>Apply Job</h2>
-        </div>
-        <div align="center">
-        <h2><strong>FORM LAMARAN</strong></h2>
-        </div>
+    <div id="appliedJob">
         
-        <hr>
+        <div align="center">
+        <img src="/assets/corlate-free-template/images/sts-logo.png" alt="Avatar" class="avatar">
+        <h2><strong>FORM LAMARAN</strong></h2>
         <form class="form-horizontal" action="/applyJob" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <input type="hidden" name="jobId" value="{{$jobId}}">
             <input type="hidden" name="jobName" value="{{$jobName}}">
             <input type="hidden" name="jobDesc" value="{{$jobDesc}}">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="txtName">Name:</label>
-                <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="txtName">Name:</label>
+                <div class="col-sm-8">
                     <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="txtName">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="txtEmail">Email:</label>
-                <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="txtEmail">Email:</label>
+                <div class="col-sm-8">
                     <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="txtEmail">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="txtPhone">Phone:</label>
-                <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="txtPhone">Phone:</label>
+                <div class="col-sm-8">
                     <input type="text" class="form-control" id="txtPhone" placeholder="Enter phone number" name="txtPhone">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="fileCv">CV:</label>
-                <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="fileCv">CV:</label>
+                <div class="col-sm-8">
                     <input type="file" id="fileCv" name="fileCv">
                 </div>
             </div>
             <div class="form-group">
-                
-            </div>
-            
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="fileOthers">Other Files:</label>
-                <div class = "col-sm-6">
+                <label class="control-label col-sm-4 for="fileOthers">Other Files:</label>
+                <div class = "col-sm-8">
                     <div class="input_fields_wrap">
                         <div><input type="file" name="mytext[]"></div>
-                        
                     </div>
-                    <a href="#" class="add_field_button">Add More Fields</a>
+                    <a href="#" class="add_field_button" style="padding-bottom: 10px;">Add More Fields</a>
                 </div>
                 
             </div>
             <div class="form-group">        
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="col-sm-offset-4 col-sm-8">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
-    </div>
+
+    </div>    
 
         <script src="/assets/corlate-free-template/js/jquery.js"></script>
         <script src="/assets/corlate-free-template/js/bootstrap.min.js"></script>
@@ -115,7 +120,7 @@
                 e.preventDefault();
                 if(x < max_fields){ //max input box allowed
                     x++; //text box increment
-                    $(wrapper).append('<div class="row rp"><div class="col-sm-4"><input type="file" name="mytext[]"/></div><div class="col-sm-4"><a href="#" class="remove_field">remove</a></div></div>'); //add input box
+                    $(wrapper).append('<div class="row rp"><div class="col-sm-8 margintop"><input type="file" name="mytext[]" style="margin-left:40px;"/></div><div class="col-sm-8"><a href="#" class="remove_field">remove</a></div></div>'); //add input box
                 }
             });
             
