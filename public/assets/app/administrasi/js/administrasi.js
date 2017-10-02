@@ -1,4 +1,4 @@
-angular.module('AdministrasiApp',['ui.bootstrap','ui.router'],function(){
+angular.module('AdministrasiApp',['ui.bootstrap','ui.router'],function($interpolateProvider){
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 })
