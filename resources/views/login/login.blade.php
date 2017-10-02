@@ -65,6 +65,16 @@ span.psw {
        width: 100%;
     }
 }
+
+#login{
+  margin: auto;
+  margin-top: 45px;
+  width: 500px;
+  height : auto;
+  border: 3px solid #ddd;
+  border-radius: 25px;
+  padding: 30px;
+}
 </style>
 @endsection
 @section('content')
@@ -84,27 +94,21 @@ span.psw {
             <p>{{session('failMsg')}}</p>
         </div>
     @endif
-    <form action="/getLogins" method="POST">
-    <div class="imgcontainer">
-      <img src="assets/corlate-free-template/images/logo-sts.png" alt="Avatar" class="avatar">
-    </div>
-  
-    <div class="form-group">
-      {{csrf_field()}}
-      <label class="form-group"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="uname" required class="form-group">
-  
-      <label class="form-group"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required class="form-group">
-          
-      <button type="submit">Login</button>
-      <!-- <input class="form-group" type="checkbox" checked="checked"> Remember me -->
-    </div>
-  
-    <!-- <div class="form-group" style="background-color:#f1f1f1">
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div> -->
+    <form action="/getLogins" method="POST" id="login">
+      <div class="imgcontainer">
+        <img src="assets/corlate-free-template/images/logo-sts.png" alt="Avatar" class="avatar">
+      </div>
+      <div class="form-group">
+          {{csrf_field()}}
+          <label>Email</label>
+          <input type="text" placeholder="Enter Email" name="uname" required class="form-control">
+      </div>
+      <div class="form-group">
+          <label>Password</label>
+         <input type="password" placeholder="Enter Password" name="psw" required class="form-control">
+      </div>
+      <button type="submit" class="btn">Login</button>
   </form>
-    </div>
+</div>
     
 @endsection

@@ -204,6 +204,7 @@
           {
             console.log(response);
             $scope.status = response;
+            
           }
           
         },function(response){
