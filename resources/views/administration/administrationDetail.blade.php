@@ -27,7 +27,7 @@
 @section('content')
 
     <div class="container" ng-app="AdministrasiApp" ng-controller="AdministrasiCtrl" >
-        <h2><Strong>ADMINISTRATION</Strong></h2>
+        <h2><Strong>Detail Administration</Strong></h2>
     <div class="panel panel-default">     
         <div class="panel-body">
             <div id="headerAdminstration">
