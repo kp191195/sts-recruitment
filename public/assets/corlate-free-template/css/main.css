@@ -184,7 +184,8 @@ body > section {
 
 .top-bar {
   padding: 10px 0;
-  background: #191919;
+ /* background: #C3F7E4;*/
+  background: #151515;
   border-bottom: 1px solid #222;
   line-height: 28px;
 }
@@ -284,8 +285,11 @@ input.search-form:hover {
   margin: 0;
   border-radius: 3px;
   color: #fff;
+  /*color: #474747;*/
   line-height: 24px;
   display: inline-block;
+  font-size: 14px;
+  font-weight: 50px;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover{
@@ -315,6 +319,7 @@ input.search-form:hover {
 
 .navbar-inverse .navbar-nav .dropdown-menu {
   background-color: rgba(0,0,0,.85);
+  /*background-color: #C3F7E4;*/
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);

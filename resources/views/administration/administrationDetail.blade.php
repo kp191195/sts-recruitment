@@ -22,6 +22,15 @@
     padding-right: 15px;
 }
 
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0;
+}
+
 </style>
 @endsection
 @section('content')
@@ -54,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row pad30">
                 <table class="table">
                     <thead>
@@ -70,7 +80,7 @@
                             <td>{{$row->sort_no}}</td>
                             <td>{{$row->admin_combo_param}}</td>
                             <td>
-                                <select name="penerimaan" id="terima" ng-model="selectedValue{{$row->sort_no}}" >
+                                <select name="penerimaan" id="terima" ng-model="selectedValue{{$row->sort_no}}" class="form-control" style="width: 180px">
                                 @foreach($comboPenerimaan as $combo)
                                     <option ng-selected= "'{{$combo->parameter}}' == '{{$row->received_data_param}}'" value="{{$combo->parameter}}">{{ $combo->parameter}}</option>
                                 @endforeach 

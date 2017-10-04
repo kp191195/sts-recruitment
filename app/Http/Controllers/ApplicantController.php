@@ -115,11 +115,12 @@ class ApplicantController extends Controller
     public function apiAddEmployee(Request $request){
         
         $dataApplicant = $request->all();
+        Log::debug("LINE 118");
         Log::debug($dataApplicant);
         $session = Session::get('sessionUser');
         $datetime = DateUtil::dateTimeNow();
         $jobApply = TJobApply::find($dataApplicant['applicantId']);
-        
+
         $employee = new MEmployee();
         $employee->person_id = $jobApply->applicant_id;
         $employee->job_apply_id = $jobApply->job_apply_id;
