@@ -164,7 +164,7 @@ class DashboardController extends Controller
         $data['meetingTime']=$meetingTime;
        
         Mail::send('template.email.email-halo', $data, function ($message) use($data) {
-            $message->from('shinosuke14@gmail.com', 'Kalvin Pratama');
+            $message->from('janganmasukvirus@gmail.com', 'Herry karmito');
             $message->to($data['email'], $data['name']);
             $message->subject('Test kirim email!');
         });

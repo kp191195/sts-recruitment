@@ -24,6 +24,7 @@
       getJobList();
       getApplicantListForFirstLoad();
 
+      // Digunakan untuk dropdown JOB
       function getJobList(){
           ApplicantService.getJobList($scope.paramJobId)
           .then(function(response){
@@ -49,7 +50,7 @@
           ApplicantService.getApplicantList(input)
           .then(function(response){
               if (response.status == 'OK'){
-                  //console.log(response);
+                  console.log(response);
                   $scope.applicantList = response.result;
               } else{
                   alert("Terjadi kesalahan pada server!");

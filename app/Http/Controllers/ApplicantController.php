@@ -121,6 +121,9 @@ class ApplicantController extends Controller
         $datetime = DateUtil::dateTimeNow();
         $jobApply = TJobApply::find($dataApplicant['applicantId']);
 
+        Log::debug('LINE 124');
+        Log::debug(var_dump($jobApply));
+
         $employee = new MEmployee();
         $employee->person_id = $jobApply->applicant_id;
         $employee->job_apply_id = $jobApply->job_apply_id;
