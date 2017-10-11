@@ -119,10 +119,11 @@ class ApplicantController extends Controller
         Log::debug($dataApplicant);
         $session = Session::get('sessionUser');
         $datetime = DateUtil::dateTimeNow();
-        $jobApply = TJobApply::find($dataApplicant['applicantId']);
+        $jobApply = TJobApply::where('applicant_id','=',$dataApplicant['applicantId'])->first();
+
 
         Log::debug('LINE 124');
-        Log::debug(var_dump($jobApply));
+        Log::debug($jobApply);
 
         $employee = new MEmployee();
         $employee->person_id = $jobApply->applicant_id;

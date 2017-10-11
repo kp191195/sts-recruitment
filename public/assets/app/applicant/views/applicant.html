@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="applicant in applicantList">
-                        <td>{{applicant.name}}</td>
+                        <td>{{applicant.name}} {{applicant.flg_qualified}}</td>
                         <td>{{applicant.email}}</td>
                         <td>{{applicant.phone_no}}</td>
                         <td><a href="" ng-click="downloadCv(applicant)">Download CV</a></td>
@@ -51,22 +51,10 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="" ng-click="openModal(applicant,'activity')">Activity</a></li>
                                     <li><a href="" ng-click="openModal(applicant,'note')">Note</a></li>
-                                    <li ng-if="applicant.flg_qualified == 'N'><a href="" ng-click="updateQualified(applicant)">Qualified</a></li>
-                                    <li ng-if="applicant.flg_accept == 'N'"><a href="" ng-disabled="disable" ng-click="openModalAccepted(applicant)">Accept</a></li>
+                                    <li ng-if="applicant.flg_qualified == 'N'"><a href="" ng-click="updateQualified(applicant)">Qualified</a></li>
+                                    <li ng-if="applicant.flg_qualified == 'Y'"><a href="" ng-disabled="disable" ng-click="openModalAccepted(applicant)">Accept</a></li>
                                 </ul>  
                             </div>
-                          <!--   <div class="form-group">
-                                <a href="" ng-click="openModal(applicant,'activity')">Activity</a>
-                            </div>
-                            <div class="form-group">
-                                <a href="" ng-click="openModal(applicant,'note')">Note</a>
-                            </div>
-                            <div class="form-group">
-                                <a href="" ng-click="updateQualified(applicant)">Qualified</a> 
-                            </div>
-                            <div class="form-group">
-                                <a href="" ng-click="openModalAccepted(applicant)">Accept</a>
-                            </div> -->
                         </td>
                     </tr>
                 </tbody>
